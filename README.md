@@ -85,7 +85,7 @@ This is when the path library comes in handy. The resulting sent file will be fr
 /src/index.html
 
 <pre>  
-
+```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -96,7 +96,7 @@ This is when the path library comes in handy. The resulting sent file will be fr
     <h1>Hello World!</h1>
   </body>
 </html>
-
+```
 </pre>
 
 Now we need to switch to the package.json and create a new script. This will be the start script which will start up the Express file server. You can remove your ‘test’ script if you wish. Add the following script in it’s place like so
