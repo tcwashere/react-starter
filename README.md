@@ -84,20 +84,19 @@ app.listen(port, function (error) {
 This is when the path library comes in handy. The resulting sent file will be from the directory of the current module (__dirname) and this path will be joined with the path ../src/index.html. Speaking of which, let’s create that file now.  
 /src/index.html
 
-<pre>  
+
 ```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Sample Project</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <h1>Hello World!</h1>
-  </body>
-</html>
+`<!DOCTYPE html>`
+`<html>`
+`  <head>`
+`    <title>Sample Project</title>`
+`  </head>`
+`  <body>`
+`    <div id="root"></div>`
+`    <h1>Hello World!</h1>`
+`  </body>`
+`</html>`
 ```
-</pre>
 
 Now we need to switch to the package.json and create a new script. This will be the start script which will start up the Express file server. You can remove your ‘test’ script if you wish. Add the following script in it’s place like so
 
