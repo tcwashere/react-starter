@@ -4,15 +4,10 @@ Creating an Express.js Environment with Webpack, React, and Babel Configurations
 **Overview**
 
 *   Introduction
-
 *   Prerequisites
-
-*   Setting up Expres
-
+*   Setting up Express
 *   Adding Babel to the mix
-
 *   Adding Webpack configurations
-
 *   Bringing in React
 
 ### Introduction
@@ -69,13 +64,9 @@ const app = express();
 <pre>Now we can listen on port 3000 and report if there are any errors in doing so.  
 
 app.listen(port, function (error) {  
-
     if(error) {  
-
         console.log(error);  
-
     }  
-
 });  
 
 </pre>
@@ -85,9 +76,7 @@ app.listen(port, function (error) {
 <pre>  
 
  app.get('/', function (req, res) {  
-
     res.sendFile(path.join(__dirname, '../src/index.html'));  
-
 });  
 
 </pre>
@@ -97,9 +86,16 @@ This is when the path library comes in handy. The resulting sent file will be fr
 
 <pre>  
 
-    <title>Sample Project</title>  
-
-# Hello World!
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sample Project</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <h1>Hello World!</h1>
+  </body>
+</html>
 
 </pre>
 
@@ -108,9 +104,7 @@ Now we need to switch to the package.json and create a new script. This will be 
 <pre>  
 
   "scripts": {  
-
     "start": "node buildScripts/server.js"  
-
   },  
 
 </pre>
@@ -129,17 +123,11 @@ In server.js change the app.listen function to have the following else statement
 <pre>  
 
  app.listen(port, function (error) {  
-
     if(error) {  
-
         console.log(error);  
-
     } else {  
-
         open(`http://localhost:${port}`)  
-
     }  
-
 });  
 
 </pre>
@@ -176,13 +164,9 @@ Now add the following babel preset after the devDependancies
 <pre>  
 
   "babel": {  
-
     "presets": [  
-
       "es2015"  
-
-    ]  
-
+    ] 
   }  
 
 </pre>
@@ -190,9 +174,7 @@ Now add the following babel preset after the devDependancies
 We can test that Babel is being used by introducing some ES6 code to our code. In buildScripts/server.js change the require statements to import statements. Import being the replacement for require.
 
 *   import express from 'express';
-
 *   import path from 'path';
-
 *   import open from 'open';
 
 And in the terminal run  
@@ -233,25 +215,16 @@ import webpack from 'webpack'
 import path from 'path'  
 
 export default {  
-
   devtool: 'inline-source-map',  
-
   entry: [  
-
     path.resolve(__dirname, 'src/index.js')   
-
   ],  
 
   output: {  
-
     path: path.resolve(__dirname, 'src'),  
-
     publicPath: '/',  
-
     filename: 'bundle.js'  
-
   }  
-
 }  
 
 </pre>
@@ -262,22 +235,17 @@ Now we’re exporting using ES6 syntax. The devtool: ‘inline-source-map’; wi
 <pre>  
 
 entry: [  
-
     path.resolve(__dirname, 'src/index.js')   
-
   ],  
 
 Is adding the point of origin for all of our application code. So any Javascript code and React components that are added here will be bundled to an output file by   
 
  output: {  
-
     path: path.resolve(__dirname, 'src'),  
-
     publicPath: '/',  
-
     filename: 'bundle.js'  
-
-  }</pre>
+  }
+  </pre>
 
 In src/ create a file called index.js and add a simple console.log("hello from index.js (bundle.js)");
 
@@ -294,11 +262,8 @@ And ;
 <pre>  
 
 app.use(require('webpack-dev-middleware')(compiler, {  
-
     noInfo: true,  
-
     publicPath: config.output.publicPath  
-
 }));  
 
 </pre>
@@ -317,25 +282,15 @@ In package.json add the following lines under babel
 <pre>  
 
   "babel": {  
-
     "presets": [  
-
       "es2015",  
-
       "react"  
-
     ],  
-
     "env": {  
-
       "presets":[  
-
         "react-hmre"  
-
       ]  
-
     }  
-
   }  
 
 </pre>
@@ -346,25 +301,18 @@ import ReactDOM from 'react-dom';
 
 <pre>  
 
-class App extends React.Component {  
-
-    render(){  
-
-        return(  
-
-<div>  
-
-# Howdy from React!
-
+class App extends React.Component {
+    render(){
+        return(
+            <div>
+                <h1>Howdy from React!</h1>
             </div>
-
-        )  
-
-    }  
-
-}  
-
+        )
+    }
+}
 </pre>
+
+
 
 ReactDOM.render(<app>, document.getElementById('root'));  
 Now with npm start localhost:3000 should read “Howdy from React!” above “Hello World!”  
