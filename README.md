@@ -16,7 +16,7 @@
 
 ### Introduction
 
-There are a two main different ways one could set up an environment for a React project; using create-react-app (which takes care of just about everything for you), or creating your own Express.js file server with your own Webpack and Babel configurations. The former is great for when one is just beginning to learn and play with React, but there’s going to be a point where you need to make some changes to a webpack.config.js file and it’s going to seem foreign and scary. But really it isn’t and it gets easier.
+There are two main different ways one could set up an environment for a React project; using create-react-app (which takes care of just about everything for you), or creating your own Express.js file server with your own Webpack and Babel configurations. The former is great for when one is just beginning to learn and play with React, but there’s going to be a point where you need to make some changes to a webpack.config.js file and it’s going to seem foreign and scary. But really it isn’t and it gets easier.
 
 The other minor issue I have with create-react-app and similar tools is that there is a lot of "black magic" going on, and I would like to know at least the basics of what’s going on under the hood.
 
@@ -32,8 +32,8 @@ Today I’m going to walk through creating a very basic file server using Expres
 
 From the terminal of your choosing make a new directory and change to that directory
 
-mkdir hello-server  
-cd hello-server  
+mkdir react-starter-project  
+cd react-starter-project  
 
 From that directory run
 
@@ -51,7 +51,7 @@ Express works with Node.js to bring Javascript to the backend. Express is a Node
 
 The path library is actually a direct copy of the Node path module. It simply provides the utilities for working with directory and file paths, making it easier for us to serve up files for our Express server.
 
-Now create a new directory called buildScripts inside simple-server. Open up the simple-server directory in an IDE of your choosing. Create a server.js file inside buildScripts and add path and express to the file.
+Now create a new directory called buildScripts inside react-starter-project. Open up the react-starter-project directory in an IDE of your choosing. Create a server.js file inside buildScripts and add path and express to the file.
 
 buildScripts/server.js  
 
@@ -65,8 +65,9 @@ const port = 8080;
 
 const app = express();  
 
-<pre>Now we can listen on port 8080 and report if there are any errors in doing so.  
+Now we can listen on port 8080 and report if there are any errors in doing so.  
 
+<pre>
 app.listen(port, function (error) {  
     if(error) {  
         console.log(error);  
@@ -75,7 +76,8 @@ app.listen(port, function (error) {
 
 </pre>
 
-<pb>While we’re here let’s have the instantiated Express application serve a file when you visit localhost:3000/  
+
+While we’re here let’s have the instantiated Express application serve a file when you visit localhost:3000/  
 
 <pre>  
 
@@ -209,7 +211,7 @@ npm install webpack webpack-dev-middleware --save-dev
 
 The webpack-dev-middleware is being used in conjunction with webpack to compile assets in-memory and sever them.
 
-Create a new file called webpack.config.dev.js in the root directory (simple-server/) and add the following.
+Create a new file called webpack.config.dev.js in the root directory (react-starter-project/) and add the following.
 
 <pre>  
 
