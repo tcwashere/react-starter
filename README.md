@@ -1,5 +1,9 @@
 # Creating an Express.js Environment with Webpack, React, and Babel Configurations  
-Creating an Express.js Environment with Webpack, React, and Babel Configurations
+
+**For The Impatient**
+*   clone repo
+*   npm install
+*   npm start
 
 **Overview**
 
