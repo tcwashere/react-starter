@@ -25,4 +25,12 @@ npm install open --save-dev
 // Babel is only needed for dev as dependencies
 npm install babel-cli  --save-dev
 npm install babel-core --save-dev
-npm install babel-preset-es2015 --save-dev
+npm install babel-preset-env --save-dev
+npm install babel-loader --save-dev
+
+// Webpack is a module bundler that gathers up all the modules with dependencies and creates static assets to represent those modules.
+npm install webpack webpack-dev-middleware --save-dev
+
+// add the reactjs components
+npm install react react-dom --save
+npm install babel-preset-react-hmre babel-preset-react --save-dev

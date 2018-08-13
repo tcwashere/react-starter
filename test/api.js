@@ -3,7 +3,7 @@ var request = require("request");
 
 describe("API Tests:", function() {
     describe("test /hello:", function() {
-      var url = "http://localhost:3000/";
+      var url = "http://localhost:8080/hello";
   
       it("returns status 200", function(done) {
         request(url, function(error, response, body) {

@@ -1,18 +1,25 @@
 import express from 'express';
 import path from 'path';
 import open from 'open';
+import config from '../webpack.config.dev';
+import webpack from 'webpack';
 
-var app = express();
+const compiler = webpack(config);
+const app = express();
 
-var hello = require("./hello");
+app.use(require('webpack-dev-middleware')(compiler, {
+    noInfo: true,
+    publicPath: config.output.publicPath
+}));
 
-// default api
-app.get("/", (req, res) => {
+// api: /hello
+app.get("/hello", (req, res) => {
     res.send("Hello World!");
 });
 
-app.get('/hello', function (req, res) {
-    res.sendFile(path.join(__dirname, './src/hello.html'));
+// default web
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname, 'src/index.html'));
 });
 
 const port = 8080;

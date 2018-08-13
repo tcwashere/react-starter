@@ -57,11 +57,11 @@ var path = require('path')
 
 A port number is required and express will need to be initialized.
 
-const port = 3000;  
+const port = 8080;  
 
 const app = express();  
 
-<pre>Now we can listen on port 3000 and report if there are any errors in doing so.  
+<pre>Now we can listen on port 8080 and report if there are any errors in doing so.  
 
 app.listen(port, function (error) {  
     if(error) {  
@@ -250,11 +250,14 @@ In src/ create a file called index.js and add a simple console.log("hello from i
 
 And in index.html add to bring in the file that will be bundled at run time by webpack-dev-middleware.
 
-Last thing we need to do is add  
+Last thing we need to do is add  the following code to server.js<br>
+
+<pre>
 import webpack from 'webpack';  
 import config from '../webpack.config.dev';  
 
 const compiler = webpack(config); ;  
+</pre>
 
 And ;  
 
